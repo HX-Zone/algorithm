@@ -60,6 +60,18 @@ function sortInHeap(&$arr)
             }
         }
     }
+    reverseArray($arr);
+}
+
+function reverseArray(&$arr)
+{
+  $length = count($arr);
+  $mid = ($length-1)/2;
+  for($j=0;$j<$mid;$j++){
+    for($k=($length-1);$k>$mid;$k--){
+      swap($arr,$j,$k);
+    }
+  }
 }
 
 $arr = array();
