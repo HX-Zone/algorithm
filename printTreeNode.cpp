@@ -6,19 +6,23 @@ void printFromTopToBottom(BinaryTreeNode* pTreeRoot){
     return;
   }
 
-  std::deque<BinaryTreeNode*> dequeTreeNode;
+  std::queue<BinaryTreeNode*> queTreeNode;
 
-  dequeTreeNode.push_back(pTreeRoot);
+  queTreeNode.push_back(pTreeRoot);
 
-  while(!dequeTreeNode.empty()){//队列不为空
-    if(pTreeRoot->m_pLeft!=NULL){
-      dequeTreeNode.push_back(pTreeRoot->m_pLeft);
+  while(!queTreeNode.size()){//队列不为空
+    BinaryTreeNode* pNode = queTreeNode.front();
+    queTreeNode.pop();
+    
+    printf("%d,",pNode->m_nValue);
+    
+    if(pNode->m_pLeft!=NULL){
+      queTreeNode.push(pNode->m_pLeft);
     }
-    if(pTreeRoot->m_pRight!=NULL){
-      dequeTreeNode.push_back(pTreeRoot->m_pRight);
+    if(pNode->m_pRight!=NULL){
+      queTreeNode.push(pNode->m_pRight);
     }
-    printf("%d,",pTreeRoot->m_nValue);
-    dequeTreeNode.pop();
+    
   }
 }
 
