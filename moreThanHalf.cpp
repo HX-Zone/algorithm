@@ -43,13 +43,19 @@ int RandomInRange(int min, int max) {
 int partition(int* data,int length,int start,int end){
   if(data==NULL || length<=0 || start<0 || end>=length)
     exit;
-  //int index = RandomInRange(start,end);
+  int index = RandomInRange(start,end);
   //std::cout << "index:" << index << std::endl;
   //int index = (end-start)/2;
-  int index = end;
-  //Swap(&data[index],&data[end]);
+  //int index = end;
+  Swap(&data[index],&data[end]);
+  for(int i=0;i<20;i++){
+     std::cout << data[i]<< "," ;
+  }
+  std::cout << std::endl;
+  std::cout << "标杆：" << data[end] << std::endl;
   int small = start-1;
-  for(index=0;index<end;++index){
+  for(index=start;index<end;++index){
+    std::cout << "small: " << small << " index: " << index << std::endl;
     if(data[index]<data[end]){
       ++small;
       if(small!=index){
@@ -93,14 +99,14 @@ int main(){
   //partition(arr,20,0,19);
   //int r = rand();
   //std::cout << r << std::endl;
-  for(int i=0;i<19;i++){
+  for(int i=0;i<20;i++){
     std::cout << arr[i]<< "," ;
   }
   std::cout << std::endl;
 
   int m = moreThanHalf(arr,20);
 
-  for(int i=0;i<19;i++){
+  for(int i=0;i<20;i++){
      std::cout << arr[i]<< "," ;
   }
   std::cout << std::endl;
