@@ -22,11 +22,11 @@ int GetUglyNumber_Solution2(int index){
       pUglyNumbers[nextUglyIndex] = min;
 
       while(*pM2*2 <= pUglyNumbers[nextUglyIndex])
-        ++ *pM2;
+        ++ pM2;
       while(*pM3*3 <= pUglyNumbers[nextUglyIndex])
-        ++ *pM3;
+        ++ pM3;
       while(*pM5*5 <= pUglyNumbers[nextUglyIndex])
-        ++ *pM5;
+        ++ pM5;
       
       ++ nextUglyIndex;
   }
@@ -36,7 +36,7 @@ int GetUglyNumber_Solution2(int index){
 } 
 
 int main(){
-  int result =  GetUglyNumber_Solution2(200);
+  int result =  GetUglyNumber_Solution2(10);
   std::cout << "result:" << result << std::endl;
     
   return 0;
