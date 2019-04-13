@@ -10,11 +10,10 @@ void swap(char* str1,char* str2){
 }
 
 
-void reverseString(char* str){
-  if(str == NULL || str[0] == '\0')
+void reverseString(char* str, int start, int end){
+  if(str == NULL || start < 0 || start > end)
     return;
-  int right = strlen(str) - 1;
-  int left = 0;
+  int left = start,right = end;
   while(left < right){
     swap(&str[left], &str[right]);
     ++ left;
@@ -22,11 +21,24 @@ void reverseString(char* str){
   }
 }
 
+void leftRotateString(char* str, int start, int end, int k){
+  if(str == NULL || start < 0 || start > end || k <= 0)
+    return;
+  if((end - start + 1) <= k )
+    return;
+  reverseString(str, start, k-1);
+  reverseString(str, k, end);
+  reverseString(str, start, end); 
+}
+
 int main(){
   char str[20] = "Hello world!";
   int l = strlen(str);
   std::cout << "length:" << l << std::endl;
-  reverseString(str);
+  //reverseString(str, 0, l-1);
+  //std::cout << "str:" << str << std::endl;
+  int k = 5;
+  leftRotateString(str, 0, l - 1, k);
   std::cout << "str:" << str << std::endl;
 
   return 0;
