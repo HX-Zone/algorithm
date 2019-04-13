@@ -26,6 +26,8 @@ int main(){
   char str[20] = "Hello world!";
   int l = strlen(str);
   std::cout << "length:" << l << std::endl;
+  reverseString(str);
+  std::cout << "str:" << str << std::endl;
 
   return 0;
 }
